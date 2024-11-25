@@ -1,19 +1,11 @@
 import 'dart:io';
 import 'dart:math';
 
-String generateRandomPassword(int length) {
-  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  final random = Random();
-  return List.generate(length, (index) => characters[random.nextInt(characters.length)]).join();
-}
-
 void main() {
-  print("Enter the length of the password (a number):");
-  int length = int.parse(stdin.readLineSync()!); // รับค่าความยาวจากผู้ใช้
+  print("Enter password length:");
+  int length = int.parse(stdin.readLineSync()!);
 
-  if (length <= 0) {
-    print("Please enter a positive number greater than 0.");
-  } else {
-    print("Your random password is: ${generateRandomPassword(length)}");
-  }
+  String password = List.generate(length, (i) => Random().nextInt(10).toString()).join();
+
+  print("password: $password");
 }
